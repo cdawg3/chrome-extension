@@ -24,7 +24,6 @@ function render(leads) {
         <a href='${leads[i]}' target='_blank'>
             ${leads[i]}
         </a>
-        <button id='btn' onclick='deleteLead()'>X</button>
       </li>
       `;
   }
@@ -40,15 +39,15 @@ inputBtn.addEventListener("click", function () {
 });
 
 tabBtn.addEventListener("click", function () {
-//   chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
-//   });
+  //   chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
+  //   });
 
-    chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
-        console.log(tabs)
-         myLeads.push(tabs[0].url)
-         localStorage.setItem("myLeads", JSON.stringify(myLeads))
-         render(myLeads)
-    })
+  chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
+    console.log(tabs);
+    myLeads.push(tabs[0].url);
+    localStorage.setItem("myLeads", JSON.stringify(myLeads));
+    render(myLeads);
+  });
 });
 
 deleteBtn.addEventListener("dblclick", function () {
